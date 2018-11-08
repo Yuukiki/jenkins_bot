@@ -2,6 +2,11 @@
 
 source `dirname $0`/scripts/utils.sh
 
+PREEXEC=`dirname $0`/preexec.sh
+if [ -f $PREEXEC ]; then
+	source $PREEXEC
+fi
+
 function initial_manifest()
 {
 	PMANIFESTDIR=`dirname $0`/manifests
@@ -54,3 +59,8 @@ lunch $PRODUCTNAME-$BUILDTYPE
 assert_unequal $? 0 "Failed to lunch"
 mka bacon -j$(nproc)
 assert_unequal $? 0 "Failed to build"
+
+POSTEXEC=`dirname $0`/postexec.sh
+if [ -f $POSTEXEC ]; then
+        source $POSTEXEC
+fi
