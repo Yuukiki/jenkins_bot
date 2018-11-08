@@ -13,14 +13,14 @@ function pr_err_exit()
 
 function assert_equal()
 {
-	if [ $1 == $2 ]; then
+	if [[ $1 == $2 ]]; then
 	       pr_err_exit $3
 	fi
 }
 
 function assert_unequal()
 {
-	if [ ! $1 == $2 ]; then
+	if [[ ! $1 == $2 ]]; then
 		pr_err_exit $3
 	fi
 }
