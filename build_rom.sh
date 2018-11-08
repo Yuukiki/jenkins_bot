@@ -29,7 +29,7 @@ function initial_manifest()
 }
 
 if [ $# == "0" ]; then
-	echo "Usage: build_rom.sh \$BUILDTOP \$CODENAME \$PRODUCTNAME \$BUILDTYPE"
+	echo "Usage: build_rom.sh \$BUILDTOP \$CODENAME \$PRODUCTNAME \$BUILDTYPE \$REPOARGS"
 	echo "eg: build_rom.sh ~/android \"wt88047\" \"lineage_wt88047\" \"eng\""
 	exit 0
 fi
@@ -39,6 +39,7 @@ BUILDTOP=$1
 CODENAME=$2
 PRODUCTNAME=$3
 BUILDTYPE=$4
+REPOARGS=$5
 
 assert_equal $BUILDTOP "" $ASSERTERROR
 assert_equal $CODENAME "" $ASSERTERROR
@@ -53,7 +54,7 @@ initial_manifest $BUILDTOP $CODENAME
 
 cd $BUILDTOP
 
-repo sync
+repo sync $REPOARGS
 assert_unequal $? 0 "Failed to sync source"
 
 . build/envsetup.sh
