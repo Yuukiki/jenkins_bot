@@ -1,15 +1,17 @@
 #!/bin/bash
 
-source `dirname $0`/scripts/utils.sh
+RUNTIMEDIR=$(cd "$(dirname "$0")";pwd)
 
-PREEXEC=`dirname $0`/preexec.sh
+source $RUNTIMEDIR/scripts/utils.sh
+
+PREEXEC=$RUNTIMEDIR/preexec.sh
 if [ -f $PREEXEC ]; then
 	source $PREEXEC
 fi
 
 function initial_manifest()
 {
-	PMANIFESTDIR=`dirname $0`/manifests
+	PMANIFESTDIR=$RUNTIMEDIR/manifests
 	TMANIFESTDIR="$1/.repo/local_manifests"
 	INITIALFILE=$TMANIFESTDIR/.initialized
 	if [ -f $INITIALFILE ]; then
@@ -58,14 +60,14 @@ assert_unequal $? 0 "Failed to sync source"
 make clobber
 
 # Enable ccache
-source `dirname $0`/scripts/ccache.sh
+source $RUNTIMEDIR/scripts/ccache.sh
 
 lunch $PRODUCTNAME-$BUILDTYPE
 assert_unequal $? 0 "Failed to lunch"
-mka bacon -j$(nproc)
+mka bacon -j$(expr $(nproc) \* 2)
 assert_unequal $? 0 "Failed to build"
 
-POSTEXEC=`dirname $0`/postexec.sh
+POSTEXEC=$RUNTIMEDIR/postexec.sh
 if [ -f $POSTEXEC ]; then
         source $POSTEXEC
 fi

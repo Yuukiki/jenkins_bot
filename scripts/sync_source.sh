@@ -1,9 +1,11 @@
 #!/bin/bash
 
-source `dirname $0`/utils.sh
+RUNTIMEDIR=$(cd "$(dirname "$0")";pwd)
+
+source $RUNTIMEDIR/utils.sh
 
 if [ $# == "0" ]; then
-	echo "Usage: sync_source.sh \$REPOURL \$BRANCH \$REPOARGS \$REPODIR"
+	echo "Usage: sync_source.sh \$REPOURL \$REPOBRANCH \$REPOARGS \$REPODIR"
 	echo "eg: sync_source.sh \"https://github.com/LineageOS/android\" \"lineage-15.1\" \"-j12\" ~/ROM/lineage"
 	exit 0
 fi
