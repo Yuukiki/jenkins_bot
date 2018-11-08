@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+<remote  name="GitHub"
+         fetch="git://github.com/" />
+
+<!-- Remove Default projects -->
+<remove-project path="platform/hardware/qcom/audio-caf/msm8916" name="LineageOS/android_hardware_qcom_audio"/>
+<remove-project path="platform/hardware/qcom/display-caf/msm8916" name="LineageOS/android_hardware_qcom_display"/>
+<remove-project path="platform/hardware/qcom/media-caf/msm8916" name="LineageOS/android_hardware_qcom_media"/>
+<remove-project path="platform/hardware/qcom/power" name="LineageOS/android_hardware_qcom_power"/>
+
+<!-- Device repos -->
+<project path="device/wingtech/wt88047" name="karthikkm007/android_device_wingtech_wt88047" revision="rr-new" remote="GitHub" />
+<project path="kernel/wingtech/msm8916" name="karthikkm007/kernel_wingtech_msm8916" revision="oreo-mr1" remote="GitHub"/>
+<project path="vendor/wingtech" name="karthikkm007/vendor_wingtech_wt88047" revision="oreo-mr1" remote="GitHub" />
+
+<!--Treble R2 Things-->
+<project path="hardware/qcom/audio-caf/msm8916" name="wt88047-treble/android_hardware_qcom_audio" revision="lineage-15.1-caf-8916" remote="GitHub" />
+<project path="hardware/qcom/display-caf/msm8916" name="wt88047-treble/android_hardware_qcom_display" revision="treble-32" remote="GitHub" />
+<project path="hardware/qcom/media-caf/msm8916" name="wt88047-treble/android_hardware_qcom_media" revision="lineage-15.1-caf-8916" remote="GitHub" />
+<project path="hardware/qcom/power" name="wt88047-treble/android_hardware_qcom_power" revision="lineage-15.1" remote="GitHub" />
+</manifest>
