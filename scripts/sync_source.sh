@@ -4,7 +4,7 @@ source `dirname $0`/utils.sh
 
 if [ $# == "0" ]; then
 	echo "Usage: sync_source.sh \$REPOURL \$BRANCH \$REPOARGS \$REPODIR"
-	echo "eg: sync_source.sh \"https://github.com/LineageOS/android\" \"-b lineage-15.1\" \"\" \"~/ROM/lineage\""
+	echo "eg: sync_source.sh \"https://github.com/LineageOS/android\" \"lineage-15.1\" \"-j12\" ~/ROM/lineage"
 	exit 0
 fi
 
@@ -18,15 +18,11 @@ REPOBRANCH=$2
 REPOARGS=$3
 REPODIR=$4
 
-if [ $REPOURL == ""]; then
-	pr_err_exit "REPOURL empty!"
-fi
+assert_equal $REPOURL "" "REPOURL empty!"
 
-if [ $REPOBRANCH == ""]; then
-	pr_err_exit "REPOBRANCH empty!"
-fi
+assert_equal $REPOBRANCH "" "REPOBRANCH empty!"
 
-if [ $REPODIR == ""]; then
+if [[ $REPODIR == "" ]]; then
 	pr_err "REPODIR not specified,assume to using default(~/android)"
 	REPODIR=~/android
 fi

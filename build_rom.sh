@@ -28,7 +28,7 @@ function initial_manifest()
 
 if [ $# == "0" ]; then
 	echo "Usage: build_rom.sh \$BUILDTOP \$CODENAME \$PRODUCTNAME \$BUILDTYPE"
-	echo "eg: build_rom.sh \"~/android\" \"wt88047\" \"lineage_wt88047\" \"eng\""
+	echo "eg: build_rom.sh ~/android \"wt88047\" \"lineage_wt88047\" \"eng\""
 	exit 0
 fi
 
