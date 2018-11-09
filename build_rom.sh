@@ -57,12 +57,11 @@ cd $BUILDTOP
 repo sync $REPOARGS
 assert_unequal $? 0 "Failed to sync source"
 
-. build/envsetup.sh
-make clobber
-
 # Enable ccache
 source $RUNTIMEDIR/scripts/ccache.sh
 
+. build/envsetup.sh
+make clobber
 lunch $PRODUCTNAME-$BUILDTYPE
 assert_unequal $? 0 "Failed to lunch"
 mka bacon -j$(expr $(nproc) \* 2)
