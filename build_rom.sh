@@ -58,6 +58,12 @@ repo sync $REPOARGS
 assert_unequal $? 0 "Failed to sync source"
 . build/envsetup.sh
 make clobber
+
+# Use ccache for builds #
+export USE_CCACHE=1
+export CCACHE_DIR=$HOME/.ccache
+Prebuilts/misc/linux-x86/ccache/ccache -M 50G
+
 lunch $PRODUCTNAME-$BUILDTYPE
 assert_unequal $? 0 "Failed to lunch"
 mka bacon -j$(expr $(nproc) \* 2)
