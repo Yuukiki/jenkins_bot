@@ -4,4 +4,5 @@
 <project path="device/xiaomi/wayne" name="MI6XDev/android_device_xiaomi_wayne" revision="staging/pie" remote="github" />
 <project path="kernel/xiaomi/sdm660" name="MI6XDev/android_kernel_xiaomi_sdm660" revision="pie" remote="github"/>
 <project path="vendor/xiaomi/wayne" name="MI6XDev/vendor_xiaomi_wayne" revision="pie" remote="github" />
+<project path="packages/resources/devicesettings" name="android_packages_resources_devicesettings" />
 </manifest>
